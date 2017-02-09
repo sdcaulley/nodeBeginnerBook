@@ -1,4 +1,6 @@
-function start(res) {
+const qs = require('querystring');
+
+function start(res, postData) {
     console.log('Request handler "Start" was called.');
 
     const body = '<html>' + '<head>' +
@@ -17,10 +19,11 @@ function start(res) {
     res.end();
 }
 
-function upload(res) {
+function upload(res, postData) {
     console.log('Request handler "Upload" was called.');
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.write('Hello Upload!');
+    res.write('You sent the text: ' +
+        qs.parse(postData).text);
     res.end();
 }
 
