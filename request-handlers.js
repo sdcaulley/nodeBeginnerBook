@@ -1,6 +1,7 @@
 const qs = require('querystring');
+const fs = require('fs');
 
-function start(res, postData) {
+function start(res) {
     console.log('Request handler "Start" was called.');
 
     const body = '<html>' + '<head>' +
@@ -27,5 +28,12 @@ function upload(res, postData) {
     res.end();
 }
 
+function show(res) {
+    console.log('Request handler "show" was call.');
+    res.writeHead(200, { 'Content-Type': 'image/png' });
+    fs.createReadStream('./tmp/test.png').pipe(res);
+}
+
 exports.start = start;
 exports.upload = upload;
+exports.show = show;
