@@ -1,4 +1,3 @@
-const qs = require('querystring');
 const fs = require('fs');
 const formidable = require('formidable');
 
